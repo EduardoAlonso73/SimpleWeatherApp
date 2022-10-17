@@ -7,6 +7,8 @@
 
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        app:layout_constraintBottom_toTopOf="@+id/linearProgressIndicator"
+        app:layout_constraintTop_toTopOf="@+id/linearProgressIndicator"
         tools:context=".MainActivity">
 
         <com.google.android.material.textview.MaterialTextView
@@ -15,11 +17,10 @@
             android:layout_height="wrap_content"
             android:textAppearance="?attr/textAppearanceHeadline4"
             android:textColor="?attr/colorSecondaryVariant"
-            tools:text="Timezome"
-            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            />
+            tools:text="Timezome" />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/tvCurrentTitl"
@@ -27,20 +28,92 @@
             android:layout_height="wrap_content"
             android:textAppearance="?attr/textAppearanceHeadline5"
             android:textColor="?attr/colorPrimary"
-            tools:text="Current Weather"
-            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tvTimeZone"/>
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvTimeZone"
+            tools:text="Current Weather" />
 
 
         <com.google.android.material.progressindicator.LinearProgressIndicator
+            android:id="@+id/linearProgressIndicator"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:indeterminate="true"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@id/tvTimeZone"
-            app:layout_constraintBottom_toBottomOf="parent"/>
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/tvTimeZone" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="16dp"
+            android:paddingVertical="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvCurrentTitl">
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tvTemp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textAppearance="?attr/textAppearanceHeadline6"
+                android:textColor="?attr/colorSecondary"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="234.6F" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tvDt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?attr/textAppearanceBody1"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="22:00" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tvHumidity"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Humidity: 65%"
+                android:textAppearance="?attr/textAppearanceOverline"
+                app:layout_constraintStart_toStartOf="@id/tvDt"
+                app:layout_constraintTop_toBottomOf="@id/tvDt" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tvMain"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Clouds"
+                android:textAppearance="?attr/textAppearanceBody1"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tvDescription"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Few Clouds"
+                android:textAppearance="?attr/textAppearanceCaption"
+                app:layout_constraintEnd_toEndOf="@id/tvMain"
+                app:layout_constraintStart_toStartOf="@id/tvDt"
+                app:layout_constraintTop_toBottomOf="@id/tvDt" />
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_marginTop="8dp"
+                android:background="@color/color_divider"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
