@@ -9,7 +9,7 @@
         android:layout_height="match_parent"
         app:layout_constraintBottom_toTopOf="@+id/linearProgressIndicator"
         app:layout_constraintTop_toTopOf="@+id/linearProgressIndicator"
-        tools:context=".MainActivity">
+        tools:context=".mainModule.view.MainActivity">
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/tvTimeZone"
