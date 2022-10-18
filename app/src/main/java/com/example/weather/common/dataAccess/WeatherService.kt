@@ -1,6 +1,6 @@
 package com.example.weather.common.dataAccess
 
-import com.example.weather.common.WeatherForecastEnt
+import com.example.weather.common.entities.WeatherForecastEnt
 import com.example.weather.common.utils.Constants
 import retrofit2.http.GET
 import retrofit2.http.Query
@@ -13,6 +13,6 @@ interface WeatherService {
         @Query(Constants.APP_ID_PARAM) appId: String,
         @Query(Constants.UNITS_PARAM) unists: String,
         @Query(Constants.LANGUAGE_PARAM) lang: String,
-        
+
         ): WeatherForecastEnt
 }

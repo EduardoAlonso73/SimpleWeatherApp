@@ -1,4 +1,4 @@
-package com.example.weather.common
+package com.example.weather.common.entities
 
 open class WeatherBase(
                        dt:Long,
