@@ -1,4 +1,7 @@
 package com.example.weather.common
 
-class WeatherBase {
-}
+open class WeatherBase(
+                       dt:Long,
+                       humidity:Int,
+                       temp:Double,
+                       weather:List<Weather>)
