@@ -5,6 +5,7 @@
 
 
     <data>
+        <import type="com.example.weather.common.utils.CommonUtils"/>
         <variable
             name="viewModel"
             type="com.example.weather.mainModule.viewModel.MainViewModel" />
@@ -86,7 +87,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:text="22:00"
-                android:text="@{String.valueOf(viewModel.result.current.dt)}"
+                android:text="@{@string/weather_dt(CommonUtils.INSTANCE.getHour(viewModel.result.current.dt))}"
                 />
 
             <com.google.android.material.textview.MaterialTextView
@@ -104,7 +105,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 tools:text="Clouds"
-                android:text="@{viewModel.result.current.weather[0].main}"
+                android:text="@{CommonUtils.INSTANCE.getWeatherMain(viewModel.result.current.weather)}"
                 android:textAppearance="?attr/textAppearanceBody1"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -114,7 +115,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 tools:text="Few Clouds"
-                android:text="@{viewModel.result.current.weather[0].description}"
+                android:text="@{CommonUtils.INSTANCE.getWeatherDescription(viewModel.result.current.weather)}"
                 android:textAppearance="?attr/textAppearanceCaption"
                 app:layout_constraintEnd_toEndOf="@id/tvMain"
 
