@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">Weather</string>
     <string name="main_error_server">Error with the server</string>
+    <string name="weather_dt">Hour: %s</string>
 </resources>
