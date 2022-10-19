@@ -3,6 +3,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
+
+    <data>
+        <variable
+            name="viewModel"
+            type="com.example.weather.mainModule.viewModel.MainViewModel" />
+    </data>
+
     <androidx.constraintlayout.widget.ConstraintLayout
 
         android:layout_width="match_parent"
@@ -100,7 +107,7 @@
                 android:text="Few Clouds"
                 android:textAppearance="?attr/textAppearanceCaption"
                 app:layout_constraintEnd_toEndOf="@id/tvMain"
-                app:layout_constraintStart_toStartOf="@id/tvDt"
+
                 app:layout_constraintTop_toBottomOf="@id/tvDt" />
 
             <View
