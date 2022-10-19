@@ -39,6 +39,7 @@
             android:textAppearance="?attr/textAppearanceHeadline5"
             android:textColor="?attr/colorPrimary"
             app:layout_constraintEnd_toEndOf="parent"
+            app:isGone="@{viewModel.isLoading()}"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tvTimeZone"
             android:text="Current Weather" />
@@ -49,7 +50,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:indeterminate="true"
-            android:visibility="invisible"
+            app:isGone="@{!viewModel.isLoading()}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
