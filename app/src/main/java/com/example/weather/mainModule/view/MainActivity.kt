@@ -45,6 +45,9 @@ class MainActivity : AppCompatActivity(),onClickListener {
             it.getSnapshotMgs().observe(this){resMsg->
                 Snackbar.make(mBinding.root,resMsg,Snackbar.LENGTH_LONG).show()
             }
+            it.getResult().observe(this){weatherForecast->
+                adapter.submitList(weatherForecast.hourly)
+            }
         }
     }
 
@@ -63,7 +66,8 @@ class MainActivity : AppCompatActivity(),onClickListener {
     override  fun onStart(){
         super.onStart()
         lifecycleScope.launch{
-            mBinding.viewModel?.getWeatherForecast(19.4325, -99.1332,"fae1ee3214e784a6aedf3cb84f5a8665","metric","en")
+            mBinding.viewModel?.getWeatherForecast(19.4325, -99.1332,
+                "6a5c325c9265883997730d09be2328e8","metric","en")
 
         }
     }
