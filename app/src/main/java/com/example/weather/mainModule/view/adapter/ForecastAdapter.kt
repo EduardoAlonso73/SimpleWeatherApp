@@ -25,7 +25,7 @@ class ForecastAdapter(private val listener: onClickListener) :
 
         val forecast=getItem(position)
         with(holder as ViewHolder){
-            holder.binding?.setVariable(BR.current,forecast)
+            holder.binding?.setVariable(BR.forecast,forecast)
             holder.binding?.executePendingBindings()
         }
     }
@@ -33,8 +33,7 @@ class ForecastAdapter(private val listener: onClickListener) :
     inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val binding = DataBindingUtil.bind<ItemWeatherBinding>(view)
         fun setListener(forecast: HourlyForecast) {
-            /*   binding?.root?.setOnClickListener { listener.onClick(itemEntity) }
-               binding.cbDelete.setOnClickListener{ listener.onLongClick(itemEntity) }*/
+           listener.onClick(forecast)
         }
     }
 
