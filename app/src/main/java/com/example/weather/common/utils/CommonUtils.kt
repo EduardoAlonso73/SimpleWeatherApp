@@ -7,6 +7,7 @@ import java.util.*
 object CommonUtils {
 
     fun getHour(epoch: Long):String=getFormatedTime(epoch,"HH:mm")
+    fun getFullData(epoch: Long):String=getFormatedTime(epoch,"dd/MM/yy HH:mm")
 
     private fun getFormatedTime(epoch: Long, pattern: String): String {
         return SimpleDateFormat(pattern, Locale.getDefault()).format(epoch*1_000)
