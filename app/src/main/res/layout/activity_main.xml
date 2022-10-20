@@ -5,7 +5,7 @@
 
 
     <data>
-        <import type="com.example.weather.common.utils.CommonUtils"/>
+
         <variable
             name="viewModel"
             type="com.example.weather.mainModule.viewModel.MainViewModel" />
@@ -61,6 +61,8 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             layout="@layout/item_weather"
+            app:Current="@{viewModel.result.current}"
+            isGone="@{!viewModel.isLoading()}"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tvCurrentTitl" />
