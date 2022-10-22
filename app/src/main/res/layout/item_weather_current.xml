@@ -1,19 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<layout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-        <import type="com.example.weather.common.utils.CommonUtils"/>
+        <import type="com.example.weather.common.utils.CommonUtils" />
+
         <variable
             name="current"
             type="com.example.weather.common.entities.Current" />
-        <variable
-            name="forecast"
-            type="com.example.weather.common.entities.HourlyForecast" />
+
     </data>
+
     <androidx.constraintlayout.widget.ConstraintLayout
 
         android:id="@+id/constraintLayout"
@@ -27,67 +26,61 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
+            android:text="@{@string/weather_temp(current.temp)}"
             android:textAppearance="?attr/textAppearanceHeadline6"
             android:textColor="?attr/colorSecondary"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:text="234.6F"
-            android:text="@{current != null ? @string/weather_temp(current.temp) : @string/weather_temp(forecast.temp)}"
-            />
+            tools:text="234.6F" />
         <!--   android:text="@{current !=null ? @string/weather_temp(current.temp) : @string/weather_temp(forecast.temp)"-->
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/tvDt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:text="@{@string/weather_dt(CommonUtils.INSTANCE.getHour(current.dt))}"
             android:textAppearance="?attr/textAppearanceBody1"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="22:00"
-            android:text="@{current!= null ? @string/weather_dt(CommonUtils.INSTANCE.getHour(current.dt)) : CommonUtils.INSTANCE.getFullData(forecast.dt)}"
-            />
 
+            />
+        <!--    android:text="@{current!= null ? @string/weather_dt(CommonUtils.INSTANCE.getHour(current.dt))
+            : CommonUtils.INSTANCE.getFullData(forecast.dt)}-->
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/tvHumidity"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            tools:text="Humidity: 65%"
-            android:text="@{ current!= null ? String.valueOf(current.humidity) : String.valueOf(forecast.humidity)}"
+            android:text="@{String.valueOf(current.humidity)}"
             android:textAppearance="?attr/textAppearanceOverline"
             app:layout_constraintStart_toStartOf="@id/tvDt"
-            app:layout_constraintTop_toBottomOf="@id/tvDt" />
+            app:layout_constraintTop_toBottomOf="@id/tvDt"
+            tools:text="Humidity: 65%" />
         <!-- android:text="@{String.valueOf(viewModel.result.current.humidity)}"-->
+        <!--            android:text="@{ current!= null ? String.valueOf(current.humidity) : String.valueOf(forecast.humidity)}"-->
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/tvMain"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            tools:text="Clouds"
-            android:text="@{ current != null ? CommonUtils.INSTANCE.getWeatherMain(current.weather) : CommonUtils.INSTANCE.getWeatherMain(forecast.weather)}"
+            android:text="@{CommonUtils.INSTANCE.getWeatherMain(current.weather)}"
             android:textAppearance="?attr/textAppearanceBody1"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Clouds" />
+        <!--            android:text="@{ current != null ? CommonUtils.INSTANCE.getWeatherMain(current.weather) : CommonUtils.INSTANCE.getWeatherMain(forecast.weather)}"-->
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/tvDescription"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            tools:text="Few Clouds"
-            android:text="@{ current != null ? CommonUtils.INSTANCE.getWeatherDescription(current.weather) : CommonUtils.INSTANCE.getWeatherDescription(forecast.weather)}"
+            android:text="@{CommonUtils.INSTANCE.getWeatherDescription(current.weather)}"
             android:textAppearance="?attr/textAppearanceCaption"
             app:layout_constraintEnd_toEndOf="@id/tvMain"
-            app:layout_constraintTop_toBottomOf="@id/tvDt" />
+            app:layout_constraintTop_toBottomOf="@id/tvDt"
+            tools:text="Few Clouds" />
+        <!--            android:text="@{ current != null ? CommonUtils.INSTANCE.getWeatherDescription(current.weather) : CommonUtils.INSTANCE.getWeatherDescription(forecast.weather)}"-->
 
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/tvPop"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            tools:text="10%"
-            android:text="@{String.valueOf(forecast.pop)}"
-            android:textAppearance="?attr/textAppearanceCaption"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tvHumidity" />
 
         <View
             android:layout_width="0dp"
