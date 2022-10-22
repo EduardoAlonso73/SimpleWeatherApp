@@ -5,7 +5,7 @@
 
 
     <data>
-        <import type="com.example.weather.common.utils.CommonUtils"/>
+        <import type="com.example.weather.common.utils.CommonUtils" />
         <variable
             name="viewModel"
             type="com.example.weather.mainModule.viewModel.MainViewModel" />
@@ -23,26 +23,25 @@
             android:id="@+id/tvTimeZone"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:text="@{viewModel.result.timezone.replace(`_`,``)}"
             android:textAppearance="?attr/textAppearanceHeadline4"
             android:textColor="?attr/colorSecondaryVariant"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:text="Timezome"
-            android:text="@{viewModel.result.timezone.replace(`_`,``)}"
-            />
+            tools:text="Timezome" />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/tvCurrentTitl"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:text="Current Weather"
             android:textAppearance="?attr/textAppearanceHeadline5"
             android:textColor="?attr/colorPrimary"
-            app:layout_constraintEnd_toEndOf="parent"
             app:isGone="@{viewModel.isLoading()}"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tvTimeZone"
-            android:text="Current Weather" />
+            app:layout_constraintTop_toBottomOf="@id/tvTimeZone" />
 
 
         <com.google.android.material.progressindicator.LinearProgressIndicator
@@ -56,39 +55,42 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@id/tvTimeZone" />
 
+
         <include
             android:id="@+id/current"
+            layout="@layout/item_weather_current"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            layout="@layout/item_weather"
             app:current="@{viewModel.result.current}"
-            app:isGone="@{!viewModel.isLoading()}"
-            app:layout_constraintStart_toStartOf="parent"
+            android:layout_height="wrap_content"
+            app:isGone="@{viewModel.isLoading()}"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tvCurrentTitl" />
-
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/tvForecastTitl"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:text=" Weather Forecast"
             android:textAppearance="?attr/textAppearanceHeadline5"
             android:textColor="?attr/colorPrimary"
-            app:layout_constraintEnd_toEndOf="parent"
             app:isGone="@{viewModel.isLoading()}"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/current"
-            android:text=" Weather Forecast" />
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerView"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            tools:listitem="@layout/item_weather"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tvForecastTitl"
-            app:layout_constraintBottom_toBottomOf="parent"/>
+            app:layout_constraintTop_toBottomOf="@+id/current" />
+
+
+       <androidx.recyclerview.widget.RecyclerView
+              android:id="@+id/recyclerView"
+              android:layout_width="0dp"
+              android:layout_height="0dp"
+              app:layout_constraintBottom_toBottomOf="parent"
+              app:layout_constraintEnd_toEndOf="parent"
+              app:layout_constraintStart_toStartOf="parent"
+              app:layout_constraintTop_toBottomOf="@id/tvForecastTitl"
+              tools:listitem="@layout/item_weather_forecast" />
+
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 
