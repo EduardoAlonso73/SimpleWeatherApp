@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.weather.BR
 import com.example.weather.R
 import com.example.weather.common.entities.HourlyForecast
-import com.example.weather.databinding.ItemWeatherBinding
+import com.example.weather.databinding.ItemWeatherForecastBinding
 
 
 class ForecastAdapter(private val listener: onClickListener) :
@@ -18,7 +18,7 @@ class ForecastAdapter(private val listener: onClickListener) :
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
-        return  ViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.item_weather,parent,false))
+        return  ViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.item_weather_forecast,parent,false))
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
@@ -31,7 +31,7 @@ class ForecastAdapter(private val listener: onClickListener) :
     }
 
     inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        val binding = DataBindingUtil.bind<ItemWeatherBinding>(view)
+        val binding = DataBindingUtil.bind<ItemWeatherForecastBinding>(view)
         fun setListener(forecast: HourlyForecast) {
            listener.onClick(forecast)
         }
