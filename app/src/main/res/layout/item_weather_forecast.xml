@@ -1,101 +1,122 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<layout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-        <import type="com.example.weather.common.utils.CommonUtils"/>
+
+        <import type="com.example.weather.common.utils.CommonUtils" />
+
         <variable
             name="forecast"
             type="com.example.weather.common.entities.HourlyForecast" />
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-
-        android:id="@+id/constraintLayout"
-        android:layout_width="match_parent"
+    <androidx.cardview.widget.CardView
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:paddingHorizontal="16dp"
-        android:paddingVertical="8dp">
+        android:layout_marginHorizontal="5dp"
+        android:layout_marginVertical="6dp"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="2dp">
 
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/tvTemp"
-            android:layout_width="wrap_content"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:paddingHorizontal="10dp"
+            android:id="@+id/constraintLayout"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:textAppearance="?attr/textAppearanceHeadline6"
-            android:textColor="?attr/colorSecondary"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:text="234.6F"
-            android:text="@{@string/weather_temp(forecast.temp)}"
-            />
-        <!--   android:text="@{current !=null ? @string/weather_temp(current.temp) : @string/weather_temp(forecast.temp)"-->
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/tvDt"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?attr/textAppearanceBody1"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:text="22:00"
-            android:text="@{ CommonUtils.INSTANCE.getFullData(forecast.dt)}"
-            />
+            android:layout_marginVertical="5dp"
+            android:paddingVertical="8dp">
 
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/tvHumidity"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            tools:text="Humidity: 65%"
-            android:text="@{ String.valueOf(forecast.humidity)}"
-            android:textAppearance="?attr/textAppearanceOverline"
-            app:layout_constraintStart_toStartOf="@id/tvDt"
-            app:layout_constraintTop_toBottomOf="@id/tvDt" />
-        <!-- android:text="@{String.valueOf(viewModel.result.current.humidity)}"-->
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tvMain"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{  CommonUtils.INSTANCE.getWeatherMain(forecast.weather)}"
+                android:textAppearance="?attr/textAppearanceBody1"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                tools:text="Clouds" />
 
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/tvMain"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            tools:text="Clouds"
-            android:text="@{  CommonUtils.INSTANCE.getWeatherMain(forecast.weather)}"
-            android:textAppearance="?attr/textAppearanceBody1"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+           <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tvDescription"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{  CommonUtils.INSTANCE.getWeatherDescription(forecast.weather)}"
+                android:textAppearance="?attr/textAppearanceCaption"
+                app:layout_constraintTop_toBottomOf="@id/tvMain"
+               app:layout_constraintStart_toStartOf="@id/tvMain"
+               app:layout_constraintEnd_toEndOf="@id/tvMain"
+                tools:text="Few Clouds" />
 
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/tvDescription"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            tools:text="Few Clouds"
-            android:text="@{  CommonUtils.INSTANCE.getWeatherDescription(forecast.weather)}"
-            android:textAppearance="?attr/textAppearanceCaption"
-            app:layout_constraintEnd_toEndOf="@id/tvMain"
-            app:layout_constraintTop_toBottomOf="@id/tvDt" />
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="80sp"
+                android:layout_height="60sp"
+                android:layout_marginTop="10dp"
+                app:weatheImg="@{CommonUtils.INSTANCE.getWeatherDescription(forecast.weather)}"
+                android:src="@drawable/ic_launcher_background"
+                app:layout_constraintEnd_toEndOf="@+id/tvDescription"
+                app:layout_constraintStart_toStartOf="@+id/tvDescription"
+                app:layout_constraintTop_toBottomOf="@+id/tvDescription" />
 
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/tvPop"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            tools:text="10%"
-            android:text="@{String.valueOf(forecast.pop)}"
-            android:textAppearance="?attr/textAppearanceCaption"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tvHumidity" />
 
-        <View
-            android:layout_width="0dp"
-            android:layout_height="1dp"
-            android:layout_marginTop="8dp"
-            android:background="@color/color_divider"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tvTemp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_marginTop="10dp"
+                android:text="@{@string/weather_temp(forecast.temp)}"
+                android:textAppearance="?attr/textAppearanceHeadline6"
+                android:textColor="?attr/colorSecondary"
+                app:layout_constraintEnd_toEndOf="@+id/imageView"
+                app:layout_constraintStart_toStartOf="@+id/imageView"
+                app:layout_constraintTop_toBottomOf="@+id/imageView"
+                tools:text="234.6F" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tvDt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{ CommonUtils.INSTANCE.getFullData(forecast.dt)}"
+                android:textAppearance="?attr/textAppearanceBody1"
+                app:layout_constraintEnd_toEndOf="@+id/tvTemp"
+                app:layout_constraintStart_toStartOf="@+id/tvTemp"
+                app:layout_constraintTop_toBottomOf="@+id/tvTemp"
+                tools:text="22:00" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tvHumidity"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{ String.valueOf(forecast.humidity)}"
+                android:textAppearance="?attr/textAppearanceOverline"
+
+                app:layout_constraintEnd_toEndOf="@+id/tvDt"
+                app:layout_constraintStart_toStartOf="@+id/tvDt"
+                app:layout_constraintTop_toBottomOf="@+id/tvDt"
+                tools:text="Humidity: 65%" />
+
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tvPop"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{String.valueOf(forecast.pop)}"
+                android:textAppearance="?attr/textAppearanceCaption"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/tvHumidity"
+                app:layout_constraintStart_toStartOf="@+id/tvHumidity"
+                app:layout_constraintTop_toBottomOf="@id/tvHumidity"
+                tools:text="10%" />
+
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
 
 </layout>
