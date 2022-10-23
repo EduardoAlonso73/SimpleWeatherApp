@@ -58,8 +58,9 @@ class MainActivity : AppCompatActivity(),onClickListener {
     private fun setuRecyclerView() {
         mBinding.recyclerView.apply {
             setHasFixedSize(true)
-            layoutManager= LinearLayoutManager(this@MainActivity)
+            layoutManager= LinearLayoutManager(this@MainActivity,LinearLayoutManager.HORIZONTAL,false)
             adapter=this@MainActivity.adapter
+
         }
     }
 
