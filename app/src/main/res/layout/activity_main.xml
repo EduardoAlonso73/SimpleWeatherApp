@@ -13,19 +13,23 @@
             type="com.example.weather.mainModule.viewModel.MainViewModel" />
     </data>
 
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:weatheBackground="@{CommonUtils.INSTANCE.getWeatherDescription(viewModel.result.current.weather)}"
         app:layout_constraintBottom_toTopOf="@+id/linearProgressIndicator"
         app:layout_constraintTop_toTopOf="@+id/linearProgressIndicator"
+        app:weatheBackground="@{CommonUtils.INSTANCE.getWeatherDescription(viewModel.result.current.weather)}"
         tools:context=".mainModule.view.MainActivity">
 
-        <com.google.android.material.progressindicator.LinearProgressIndicator
+
+        <pl.droidsonroids.gif.GifImageView
             android:id="@+id/linearProgressIndicator"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
             android:indeterminate="true"
+            android:src="@drawable/loader"
+            tools:visibility="invisible"
             app:isGone="@{!viewModel.isLoading()}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -38,16 +42,16 @@
             android:layout_height="wrap_content"
             android:paddingTop="10dp"
             android:paddingBottom="5dp"
-            app:isGone="@{viewModel.isLoading()}"
             android:text="@{viewModel.result.timezone.replace(`_`,``)}"
             android:textAppearance="?attr/textAppearanceHeadline4"
             android:textColor="@color/white"
-            tools:textColor="@color/black"
+            app:isGone="@{viewModel.isLoading()}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
+            tools:text="Timezome"
 
-            tools:text="Timezome" />
+            tools:textColor="@color/black" />
 
         <include
             android:id="@+id/current"
@@ -59,7 +63,6 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tvTimeZone" />
-
 
 
         <com.google.android.material.textview.MaterialTextView
@@ -81,8 +84,9 @@
             android:id="@+id/recyclerView"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            app:isGone="@{viewModel.isLoading()}"
+
             android:layout_marginHorizontal="10dp"
+            app:isGone="@{viewModel.isLoading()}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

@@ -2,10 +2,8 @@ package com.example.weather.mainModule.view
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.databinding.DataBindingUtil
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.weather.BR
@@ -67,7 +65,7 @@ class MainActivity : AppCompatActivity(),onClickListener {
     override  fun onStart(){
         super.onStart()
         lifecycleScope.launch{
-            mBinding.viewModel?.getWeatherForecast(19.4325, -99.1332,
+            mBinding.viewModel?.getWeatherForecast(21.140173, -98.419629,
                 "6a5c325c9265883997730d09be2328e8","metric","en")
 
         }
