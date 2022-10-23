@@ -5,44 +5,21 @@
 
 
     <data>
+
         <import type="com.example.weather.common.utils.CommonUtils" />
+
         <variable
             name="viewModel"
             type="com.example.weather.mainModule.viewModel.MainViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        app:weatheBackground="@{CommonUtils.INSTANCE.getWeatherDescription(viewModel.result.current.weather)}"
         app:layout_constraintBottom_toTopOf="@+id/linearProgressIndicator"
         app:layout_constraintTop_toTopOf="@+id/linearProgressIndicator"
         tools:context=".mainModule.view.MainActivity">
-
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/tvTimeZone"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@{viewModel.result.timezone.replace(`_`,``)}"
-            android:textAppearance="?attr/textAppearanceHeadline4"
-            android:textColor="?attr/colorSecondaryVariant"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:text="Timezome" />
-
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/tvCurrentTitl"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Current Weather"
-            android:textAppearance="?attr/textAppearanceHeadline5"
-            android:textColor="?attr/colorPrimary"
-            app:isGone="@{viewModel.isLoading()}"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tvTimeZone" />
-
 
         <com.google.android.material.progressindicator.LinearProgressIndicator
             android:id="@+id/linearProgressIndicator"
@@ -55,40 +32,62 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@id/tvTimeZone" />
 
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tvTimeZone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="10dp"
+            android:paddingBottom="5dp"
+            app:isGone="@{viewModel.isLoading()}"
+            android:text="@{viewModel.result.timezone.replace(`_`,``)}"
+            android:textAppearance="?attr/textAppearanceHeadline4"
+            android:textColor="@color/white"
+            tools:textColor="@color/black"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+
+            tools:text="Timezome" />
 
         <include
             android:id="@+id/current"
             layout="@layout/item_weather_current"
             android:layout_width="0dp"
-            app:current="@{viewModel.result.current}"
             android:layout_height="wrap_content"
+            app:current="@{viewModel.result.current}"
             app:isGone="@{viewModel.isLoading()}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvCurrentTitl" />
+            app:layout_constraintTop_toBottomOf="@id/tvTimeZone" />
+
+
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/tvForecastTitl"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:paddingHorizontal="10dp"
+            android:paddingVertical="16dp"
             android:text=" Weather Forecast"
-            android:textAppearance="?attr/textAppearanceHeadline5"
-            android:textColor="?attr/colorPrimary"
+            android:textColor="@color/white"
+            android:textSize="15sp"
             app:isGone="@{viewModel.isLoading()}"
-            app:layout_constraintEnd_toEndOf="parent"
+
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/current" />
 
 
-       <androidx.recyclerview.widget.RecyclerView
-              android:id="@+id/recyclerView"
-              android:layout_width="0dp"
-              android:layout_height="0dp"
-              app:layout_constraintBottom_toBottomOf="parent"
-              app:layout_constraintEnd_toEndOf="parent"
-              app:layout_constraintStart_toStartOf="parent"
-              app:layout_constraintTop_toBottomOf="@id/tvForecastTitl"
-              tools:listitem="@layout/item_weather_forecast" />
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:isGone="@{viewModel.isLoading()}"
+            android:layout_marginHorizontal="10dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvForecastTitl"
+            tools:listitem="@layout/item_weather_forecast" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
