@@ -29,12 +29,12 @@
             android:layout_height="200dp"
             android:indeterminate="true"
             android:src="@drawable/loader"
-            tools:visibility="invisible"
             app:isGone="@{!viewModel.isLoading()}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@id/tvTimeZone" />
+            app:layout_constraintTop_toTopOf="@id/tvTimeZone"
+            tools:visibility="invisible" />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/tvTimeZone"
@@ -50,7 +50,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="Timezome"
-
             tools:textColor="@color/black" />
 
         <include
