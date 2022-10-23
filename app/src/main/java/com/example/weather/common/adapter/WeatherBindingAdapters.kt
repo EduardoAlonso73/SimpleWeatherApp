@@ -39,7 +39,7 @@ fun coloWeather(backgr: ConstraintLayout, typeWeather: String) {
         weather[2]->backgr.setBackgroundColor(Color.parseColor("#989898"))
         weather[3]->backgr.setBackgroundColor(Color.parseColor("#FFDA74"))
         weather[4]->backgr.setBackgroundColor(Color.parseColor("#CACBCE"))
-        else ->backgr.setBackgroundColor(Color.parseColor("#FD9E34"))
+        else ->backgr.setBackgroundColor(Color.parseColor("#B5DEFF"))
     }
 
 }
