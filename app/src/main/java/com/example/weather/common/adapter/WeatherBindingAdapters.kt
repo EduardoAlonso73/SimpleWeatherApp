@@ -20,12 +20,20 @@ fun bindIsGone(view: View, isGone: Boolean) {
 
 @BindingAdapter("weatheImg")
 fun weather(img: ImageView, typeWeather: String) {
-    val weather =listOf<String>("broken clouds", "scattered clouds", "overcast clouds", "few clouds","light rain")
+    val weather = arrayListOf(
+        "broken clouds",
+        "scattered clouds",
+        "overcast clouds",
+        "few clouds",
+        "light rain",
+        "clear sky"
+    )
     when (typeWeather) {
-        weather[0],weather[1] -> img.setImageResource(R.drawable.ic_scatted_broke)
-        weather[2]->img.setImageResource(R.drawable.ic_overcast)
-        weather[3]->img.setImageResource(R.drawable.ic_few_clouds)
-        weather[4]->img.setImageResource(R.drawable.ic_light_rain)
+        weather[0], weather[1] -> img.setImageResource(R.drawable.ic_scatted_broke)
+        weather[2] -> img.setImageResource(R.drawable.ic_overcast)
+        weather[3] -> img.setImageResource(R.drawable.ic_few_clouds)
+        weather[4] -> img.setImageResource(R.drawable.ic_light_rain)
+        weather[5] -> img.setImageResource(R.drawable.clear_sky)
         else -> img.setImageResource(R.drawable.ic_strange_weather)
     }
 
@@ -33,13 +41,20 @@ fun weather(img: ImageView, typeWeather: String) {
 
 @BindingAdapter("weatheBackground")
 fun coloWeather(backgr: ConstraintLayout, typeWeather: String) {
-    val weather =listOf<String>("broken clouds", "scattered clouds", "overcast clouds", "few clouds","light rain")
+    val weather = arrayListOf(
+        "broken clouds",
+        "scattered clouds",
+        "overcast clouds",
+        "few clouds",
+        "light rain",
+        "clear sky"
+    )
     when (typeWeather) {
-        weather[0],weather[1] ->backgr.setBackgroundColor(Color.parseColor("#31C8FF"))
-        weather[2]->backgr.setBackgroundColor(Color.parseColor("#989898"))
-        weather[3]->backgr.setBackgroundColor(Color.parseColor("#FFDA74"))
-        weather[4]->backgr.setBackgroundColor(Color.parseColor("#CACBCE"))
-        else ->backgr.setBackgroundColor(Color.parseColor("#B5DEFF"))
+        weather[0], weather[1] -> backgr.setBackgroundColor(Color.parseColor("#31C8FF"))
+        weather[2] -> backgr.setBackgroundColor(Color.parseColor("#989898"))
+        weather[3] -> backgr.setBackgroundColor(Color.parseColor("#FFDA74"))
+        weather[4] -> backgr.setBackgroundColor(Color.parseColor("#CACBCE"))
+        else -> backgr.setBackgroundColor(Color.parseColor("#B5DEFF"))
     }
 
 }
