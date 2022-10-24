@@ -17,14 +17,14 @@ import com.example.weather.mainModule.viewModel.MainViewModel
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.coroutines.launch
 
-class MainActivity : AppCompatActivity(),onClickListener {
+class MainActivity : AppCompatActivity(), onClickListener {
 
-    private lateinit var mBinding:ActivityMainBinding
-    private lateinit var adapter:ForecastAdapter
+    private lateinit var mBinding: ActivityMainBinding
+    private lateinit var adapter: ForecastAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        mBinding=DataBindingUtil.setContentView(this,R.layout.activity_main)
+        mBinding = DataBindingUtil.setContentView(this, R.layout.activity_main)
 
         setupViewModel()
         setupObserver()
@@ -33,45 +33,49 @@ class MainActivity : AppCompatActivity(),onClickListener {
     }
 
     private fun setupViewModel() {
-        val vm:MainViewModel by viewModels()
-        mBinding.lifecycleOwner=this
-        mBinding.setVariable(BR.viewModel,vm)
+        val vm: MainViewModel by viewModels()
+        mBinding.lifecycleOwner = this
+        mBinding.setVariable(BR.viewModel, vm)
     }
 
     private fun setupObserver() {
         mBinding.viewModel?.let {
-            it.getSnapshotMgs().observe(this){resMsg->
-                Snackbar.make(mBinding.root,resMsg,Snackbar.LENGTH_LONG).show()
+            it.getSnapshotMgs().observe(this) { resMsg ->
+                Snackbar.make(mBinding.root, resMsg, Snackbar.LENGTH_LONG).show()
             }
-            it.getResult().observe(this){weatherForecast->
+            it.getResult().observe(this) { weatherForecast ->
                 adapter.submitList(weatherForecast.hourly)
             }
         }
     }
 
     private fun setupAdapter() {
-        adapter= ForecastAdapter(this)
+        adapter = ForecastAdapter(this)
     }
 
     private fun setuRecyclerView() {
         mBinding.recyclerView.apply {
             setHasFixedSize(true)
-            layoutManager= LinearLayoutManager(this@MainActivity,LinearLayoutManager.HORIZONTAL,false)
-            adapter=this@MainActivity.adapter
+            layoutManager =
+                LinearLayoutManager(this@MainActivity, LinearLayoutManager.HORIZONTAL, false)
+            adapter = this@MainActivity.adapter
 
         }
     }
 
-    override  fun onStart(){
+    override fun onStart() {
         super.onStart()
-        lifecycleScope.launch{
-            mBinding.viewModel?.getWeatherForecast(21.140173, -98.419629,
-                "6a5c325c9265883997730d09be2328e8","metric","en")
+        lifecycleScope.launch {
+            mBinding.viewModel?.getWeatherForecast(
+                21.140173, -98.419629,
+                "6a5c325c9265883997730d09be2328e8", "metric", "en"
+            )
 
         }
     }
 
     override fun onClick(forecast: HourlyForecast) {
-      Snackbar.make(mBinding.root,CommonUtils.getFullData(forecast.dt),Snackbar.LENGTH_LONG).show()
+        Snackbar.make(mBinding.root, CommonUtils.getFullData(forecast.dt), Snackbar.LENGTH_LONG)
+            .show()
     }
 }
