@@ -27,11 +27,11 @@
             android:layout_width="150dp"
             android:layout_height="120dp"
             android:scaleType="fitCenter"
-            tools:src="@drawable/ic_light_rain"
-            app:weatheImg="@{CommonUtils.INSTANCE.getWeatherDescription(current.weather)}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:weatheImg="@{CommonUtils.INSTANCE.getWeatherDescription(current.weather)}"
+            tools:src="@drawable/ic_light_rain" />
 
 
         <com.google.android.material.textview.MaterialTextView
@@ -41,13 +41,13 @@
             android:layout_marginTop="5dp"
             android:text="@{CommonUtils.INSTANCE.getWeatherDescription(current.weather)}"
             android:textAppearance="?attr/textAppearanceCaption"
-            android:textSize="15sp"
             android:textColor="@color/white"
-            tools:textColor="@color/black"
+            android:textSize="15sp"
             app:layout_constraintEnd_toEndOf="@+id/imgWeatherCurrent"
             app:layout_constraintStart_toStartOf="@+id/imgWeatherCurrent"
             app:layout_constraintTop_toBottomOf="@+id/imgWeatherCurrent"
-            tools:text="Few Clouds" />
+            tools:text="Few Clouds"
+            tools:textColor="@color/black" />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/tvTemp"
@@ -58,12 +58,12 @@
             android:text="@{@string/weather_temp(current.temp)}"
             android:textAppearance="?attr/textAppearanceHeadline2"
             android:textColor="@color/white"
-            tools:textColor="@color/black"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="@+id/tvDescription"
             app:layout_constraintStart_toStartOf="@+id/tvDescription"
             app:layout_constraintTop_toBottomOf="@+id/tvDescription"
-            tools:text="234.6F" />
+            tools:text="234.6F"
+            tools:textColor="@color/black" />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/tvDt"
@@ -71,39 +71,39 @@
             android:layout_height="wrap_content"
             android:text="@{@string/weather_dt(CommonUtils.INSTANCE.getHour(current.dt))}"
             android:textAppearance="?attr/textAppearanceBody1"
-            app:layout_constraintEnd_toEndOf="@+id/tvMain"
             android:textColor="@color/white"
-            tools:textColor="@color/black"
+            app:layout_constraintEnd_toEndOf="@+id/tvMain"
             app:layout_constraintStart_toStartOf="@+id/tvMain"
             app:layout_constraintTop_toBottomOf="@+id/tvMain"
-            tools:text="22:00" />
+            tools:text="22:00"
+            tools:textColor="@color/black" />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/tvHumidity"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="16dp"
-            android:textColor="@color/white"
-            tools:textColor="@color/black"
             android:text="@{String.valueOf(current.humidity)}"
             android:textAppearance="?attr/textAppearanceOverline"
+            android:textColor="@color/white"
+            android:textSize="16dp"
             app:layout_constraintEnd_toEndOf="@+id/tvTemp"
             app:layout_constraintStart_toStartOf="@+id/tvTemp"
             app:layout_constraintTop_toBottomOf="@+id/tvTemp"
-            tools:text="Humidity: 65%" />
+            tools:text="Humidity: 65%"
+            tools:textColor="@color/black" />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/tvMain"
-            android:textColor="@color/white"
-            tools:textColor="@color/black"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@{CommonUtils.INSTANCE.getWeatherMain(current.weather)}"
             android:textAppearance="?attr/textAppearanceBody1"
+            android:textColor="@color/white"
             app:layout_constraintEnd_toEndOf="@+id/tvHumidity"
             app:layout_constraintStart_toStartOf="@+id/tvHumidity"
             app:layout_constraintTop_toBottomOf="@+id/tvHumidity"
-            tools:text="Clouds" />
+            tools:text="Clouds"
+            tools:textColor="@color/black" />
 
 
         <!--
